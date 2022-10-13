@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import mainReducer from "./mainReducer";
+import sectionsReducer from "./sectionsReducer";
 import initialState from "./initialState";
 
 const withDevtools = () => {
@@ -10,6 +11,7 @@ const withDevtools = () => {
 const store = configureStore({
 	reducer: {
 		main: mainReducer,
+		sections: sectionsReducer,
 	},
 	devTools: () => withDevtools(),
 	// devTools: true,

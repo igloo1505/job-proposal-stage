@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/hero.module.scss";
+import { connect } from "react-redux";
 import Introduction from "./Introduction";
 import Image from "next/image";
 import gsap from "gsap";
@@ -7,10 +8,12 @@ import Panel from "./Panel";
 const introTextId = "animate-introText-entrance";
 const introImageId = "animate-introImage-entrance";
 const avatarId = "animate-avatar-entrance";
-const Hero = () => {
+
+const Hero = ({ setIsEntering, setHasEntered, sections: { isEntering } }) => {
 	useEffect(() => {
-		if (typeof window !== "undefined") {
-			animateEntrance();
+		if (typeof window !== "undefined" && !isEntering) {
+			setIsEntering();
+			animateEntrance(setHasEntered);
 		}
 	}, []);
 
@@ -39,10 +42,14 @@ const Hero = () => {
 	);
 };
 
-export default Hero;
+const mapStateToProps = (state, props) => ({
+	sections: state.sections,
+});
 
-const animateEntrance = () => {
-	const tl = gsap.timeline();
+export default connect(mapStateToProps)(Hero);
+
+const animateEntrance = (oncomplete) => {
+	const tl = gsap.timeline({ onComplete: oncomplete });
 	tl.fromTo(
 		`#${introImageId}`,
 		{
