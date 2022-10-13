@@ -22,7 +22,7 @@ const Hero = ({ setIsEntering, setHasEntered, sections: { isEntering } }) => {
 			<Introduction introTextId={introTextId} avatarId={avatarId} />
 			<Panel
 				animateId={introImageId}
-				extraStyles={{ borderRadius: "20px" }}
+				extraStyles={{ borderRadius: "20px", zIndex: 10 }}
 				shadowColor="secondary"
 				hoverBoxShadow
 			>
@@ -91,11 +91,11 @@ const animateEntrance = (oncomplete) => {
 		},
 		"-=1.0"
 	);
-	gsap.fromTo(
-		`#${introImageId}`,
-		{
-			opacity: 0.2,
-		},
-		{ opacity: 1, duration: 5, ease: "power4.out" }
-	);
+	// gsap.fromTo(
+	// 	`#${introImageId}`,
+	// 	{
+	// 		opacity: 1,
+	// 	},
+	// 	{ opacity: 1, duration: 3.5, ease: "power4.out" }
+	// );
 };

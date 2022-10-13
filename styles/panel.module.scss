@@ -4,17 +4,16 @@
 	margin: 0.75rem;
 	transition: box-shadow 0.3s ease-in-out;
 	cursor: default;
-	// z-index: -10;
 }
 
 .panelBoxShadow_primary {
-	transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out 0.1s;
+	transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
 	transform: scale(1.005, 1.005) !important;
 	box-shadow: 2px 2px 10px #00e5ff88, -2px -2px 10px #6effff88;
 }
 
 .panelBoxShadow_secondary {
-	transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out 0.1s;
+	transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
 	transform: scale(1.005, 1.005) !important;
 	box-shadow: 2px 2px 10px #e040fb88, -2px -2px 10px #ff79ff88;
 }
