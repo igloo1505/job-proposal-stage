@@ -3,7 +3,7 @@ import styles from "../styles/hero.module.scss";
 import Introduction from "./Introduction";
 import Image from "next/image";
 import gsap from "gsap";
-
+import Panel from "./Panel";
 const introTextId = "animate-introText-entrance";
 const introImageId = "animate-introImage-entrance";
 const avatarId = "animate-avatar-entrance";
@@ -17,18 +17,24 @@ const Hero = () => {
 	return (
 		<div className={styles.heroContainer}>
 			<Introduction introTextId={introTextId} avatarId={avatarId} />
-			<div className={styles.heroImageContainer}>
-				<div className={styles.imageOverlay}>
-					<Image
-						src="/assets/laylaToreUpToy.jpeg"
-						alt="Sometimes a trouble maker"
-						layout="fill"
-						objectFit="cover"
-						className={styles.heroImage}
-						id={introImageId}
-					/>
+			<Panel
+				animateId={introImageId}
+				extraStyles={{ borderRadius: "20px" }}
+				shadowColor="secondary"
+				hoverBoxShadow
+			>
+				<div className={styles.heroImageContainer}>
+					<div className={styles.imageOverlay}>
+						<Image
+							src="/assets/laylaToreUpToy.jpeg"
+							alt="Sometimes a trouble maker"
+							layout="fill"
+							objectFit="cover"
+							className={styles.heroImage}
+						/>
+					</div>
 				</div>
-			</div>
+			</Panel>
 		</div>
 	);
 };
@@ -41,10 +47,20 @@ const animateEntrance = () => {
 		`#${introImageId}`,
 		{
 			y: -300,
+			x: 500,
 			scaleX: 0.1,
 			scaleY: 0.1,
 		},
-		{ y: 0, scaleX: 1, scaleY: 1, duration: 1.5, ease: "elastic.out(1, 0.3)" }
+		{
+			y: 0,
+			x: 0,
+			scaleX: 1,
+			scaleY: 1,
+			// duration: 1.5,
+			duration: 0.5,
+			// ease: "elastic.out(1, 0.3)",
+			ease: "back.out(1.7)",
+		}
 	);
 	tl.fromTo(
 		`#${introTextId}`,
@@ -73,6 +89,6 @@ const animateEntrance = () => {
 		{
 			opacity: 0.2,
 		},
-		{ opacity: 1, duration: 7.5, ease: "power4.out" }
+		{ opacity: 1, duration: 5, ease: "power4.out" }
 	);
 };

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/HeroAvatar.module.scss";
 import Image from "next/image";
+import clsx from "clsx";
 
 const HeroAvatar = ({ avatarId }) => {
 	const [isHovered, setIsHovered] = useState(false);
@@ -8,6 +9,7 @@ const HeroAvatar = ({ avatarId }) => {
 
 	const handleMouse = (val) => {
 		if (hasLoaded) {
+			console.log("setting is Hovered");
 			setIsHovered(val);
 		}
 	};
@@ -20,24 +22,21 @@ const HeroAvatar = ({ avatarId }) => {
 				onMouseLeave={() => handleMouse(false)}
 				id={avatarId}
 			>
-				{isHovered ? (
-					<Image
-						src="/assets/avatarWinking.png"
-						alt="avatar image"
-						width={150}
-						height={150}
-						className={styles.heroAvatar}
-					/>
-				) : (
-					<Image
-						src="/assets/avatarNormal.png"
-						alt="avatar image winking"
-						width={150}
-						height={150}
-						className={styles.heroAvatar}
-						onLoadingComplete={() => setHasLoaded(true)}
-					/>
-				)}
+				<Image
+					src="/assets/avatarWinking.png"
+					alt="avatar image"
+					width={150}
+					height={150}
+					className={styles.heroAvatar}
+				/>
+				<Image
+					src="/assets/avatarNormal.png"
+					alt="avatar image winking"
+					width={150}
+					height={150}
+					onLoadingComplete={() => setHasLoaded(true)}
+					className={clsx(styles.heroAvatar, isHovered && styles.hideAvatar)}
+				/>
 			</div>
 		</div>
 	);

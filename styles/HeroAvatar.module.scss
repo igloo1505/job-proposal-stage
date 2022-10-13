@@ -1,9 +1,23 @@
 .heroAvatarContainer {
 	padding: 1rem;
+	margin-top: 2rem;
 }
 .heroAvatarContainerInner {
 	opacity: 0;
+	position: relative;
+	width: 150px;
+	height: 150px;
+	& span {
+		position: absolute !important;
+		height: 150px !important;
+		width: 150px !important;
+	}
 }
 .heroAvatar {
 	border-radius: 50%;
+	position: absolute;
+}
+
+.hideAvatar {
+	opacity: 0 !important;
 }
