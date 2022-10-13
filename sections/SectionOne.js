@@ -1,10 +1,10 @@
 import React from "react";
 import Panel from "../components/Panel";
-
+import Hero from "../components/Hero";
 const SectionOne = () => {
 	return (
 		<div>
-			<Panel hoverBoxShadow={true}>Section One in panel</Panel>
+			<Hero />
 		</div>
 	);
 };

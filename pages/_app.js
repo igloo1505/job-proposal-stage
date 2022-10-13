@@ -9,6 +9,7 @@ import mainTheme from "../styles/mainTheme";
 import { CssBaseline } from "@mui/material";
 import { CacheProvider } from "@emotion/react";
 import store from "../state/store";
+import { updateUISpecs } from "../state/actions";
 
 const createEmotionCache = () => {
 	return createCache({ key: "css", prepend: true });
@@ -23,6 +24,13 @@ function MyApp(props) {
 			jssStyles.parentElement.removeChild(jssStyles);
 		}
 	}, []);
+
+	useEffect(() => {
+		if (typeof window !== "undefined") {
+			window.addEventListener("resize", updateUISpecs);
+		}
+	}, []);
+
 	return (
 		<CacheProvider value={emotionCache}>
 			<ThemeProvider theme={mainTheme}>
