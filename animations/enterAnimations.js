@@ -2,11 +2,33 @@ import gsap from "gsap";
 import * as ids from "./domIDs";
 import { _id } from "../utils/utilFunctions";
 import { winkyWinky } from "./variousAnimations";
+import introStyles from "../styles/introduction.module.scss";
+
+export const observerUnderlineTarget = (e) => {
+	let targetEm = document.getElementById(ids.textTarget_bestFriend);
+	let underlineEm = document.getElementById(ids.bestFriendUnderline);
+	if (targetEm && underlineEm) {
+		let targetRect = targetEm.getBoundingClientRect();
+		underlineEm.style.width = `calc(${targetRect.width}px + 1rem)`;
+		underlineEm.style.top = `calc(${targetRect.top}px + 1.4rem)`;
+		underlineEm.style.left = `calc(${targetRect.left}px - 0.5rem)`;
+		underlineEm.classList.remove(introStyles.underlineContainerHide);
+		console.log(
+			"introStyles.underlineContainerHide: ",
+			introStyles.underlineContainerHide
+		);
+	}
+};
 
 const enterSections = {
 	1: (oncomplete) => {
 		console.log("Enter section one");
-		const tl = gsap.timeline({ onComplete: oncomplete });
+		const tl = gsap.timeline({
+			onComplete: () => {
+				oncomplete();
+				observerUnderlineTarget();
+			},
+		});
 		tl.fromTo(
 			`#${ids.introImageId}`,
 			{

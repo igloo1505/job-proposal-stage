@@ -1,3 +1,13 @@
 .photoStackTextContainer {
-	border: 1px solid red;
+	margin: 2rem;
+}
+
+.photoStackTextContainer_hidden {
+	opacity: 0;
+}
+.sectionTwoContainer_show {
+	background-color: blue;
+}
+
+.photoStackTextContainerInner {
 }

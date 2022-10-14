@@ -3,7 +3,7 @@ import Panel from "../components/Panel";
 import Hero from "../components/Hero";
 import { connect, useDispatch } from "react-redux";
 import * as Types from "../state/Types";
-
+import { observerUnderlineTarget } from "../animations/enterAnimations";
 const SectionOne = ({ sections: { isEntering }, enterAnimation }) => {
 	const dispatch = useDispatch();
 	const setIsEntering = () => {

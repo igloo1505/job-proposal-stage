@@ -8,6 +8,8 @@ import {
 } from "../animations/variousAnimations";
 import * as ids from "../animations/domIDs";
 
+// TODO move animation after scrolling away from section one to move guy up to the corner of screen
+
 const HeroAvatar = ({ avatarId, hasInitiallyEntered }) => {
 	const [isHovered, setIsHovered] = useState(false);
 	const [hasLoaded, setHasLoaded] = useState(false);

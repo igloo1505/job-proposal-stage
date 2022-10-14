@@ -22,7 +22,7 @@ class StackedPhoto {
 
 const data = [];
 
-data.append(
+data.push(
 	new StackedPhoto(
 		0,
 		"/assets/laylaInLivingRoom.jpeg",

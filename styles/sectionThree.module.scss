@@ -1,0 +1,25 @@
+.sectionThreeContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	height: 95%;
+	width: 95%;
+	// gap: 2rem;
+	// top: 2rem;
+	// left: 2rem;
+	top: 1rem;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+	border: 2px solid blue;
+}
+
+.sectionThreeContainer_hidden {
+	opacity: 0;
+	z-index: -1000;
+}
+.sectionThreeContainer_show {
+	opacity: 1;
+}

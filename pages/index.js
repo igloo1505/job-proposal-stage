@@ -64,16 +64,15 @@ const Home = ({ sections: { isEntering, activeSection } }) => {
 			}
 		}
 	};
-	// TODO In the morning resume by breaking these up into seperate useDrag, useWheel... functions and pass in ref to get over this bug
 	useDrag((gestureState) => handleSectionState(gestureState), dragConfig);
 	useWheel((gestureState) => handleSectionState(gestureState), wheelConfig);
 	useScroll((gestureState) => handleSectionState(gestureState), scrollConfig);
-	// useEffect(() => {
-	// 	if (typeof window !== "undefined") {
-	// 		document.addEventListener("gesturestart", (e) => e.preventDefault());
-	// 		document.addEventListener("gesturechange", (e) => e.preventDefault());
-	// 	}
-	// }, []);
+	useEffect(() => {
+		if (typeof window !== "undefined") {
+			document.addEventListener("gesturestart", (e) => e.preventDefault());
+			document.addEventListener("gesturechange", (e) => e.preventDefault());
+		}
+	}, []);
 	useEffect(() => {
 		setGestureConfig({
 			scroll: {

@@ -1,3 +1,12 @@
 .photoStackContainer {
-	border: 1px solid green;
+	width: min(40%, 600px);
+}
+
+// .photoStackPhotoContainer {
+// }
+
+.photoStackContainer_hidden {
+	opacity: 0;
+}
+.photoStackContainer_show {
 }
