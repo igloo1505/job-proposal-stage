@@ -2,17 +2,31 @@ import React, { useState, useEffect } from "react";
 import styles from "../styles/HeroAvatar.module.scss";
 import Image from "next/image";
 import clsx from "clsx";
+import {
+	winkyWinky,
+	occasionallyAnimateCold,
+} from "../animations/variousAnimations";
+import * as ids from "../animations/domIDs";
 
-const HeroAvatar = ({ avatarId }) => {
+const HeroAvatar = ({ avatarId, hasInitiallyEntered }) => {
 	const [isHovered, setIsHovered] = useState(false);
 	const [hasLoaded, setHasLoaded] = useState(false);
+	const [hasUsedCheesyToggle, setHasUsedCheesyToggle] = useState(false);
 
 	const handleMouse = (val) => {
 		if (hasLoaded) {
-			console.log("setting is Hovered");
 			setIsHovered(val);
+			// winkyWinky();
 		}
 	};
+	useEffect(() => {
+		if (hasInitiallyEntered && hasLoaded) {
+			setTimeout(() => {
+				setHasUsedCheesyToggle(true);
+				winkyWinky();
+			}, 1000);
+		}
+	}, [hasLoaded, hasInitiallyEntered]);
 
 	return (
 		<div className={styles.heroAvatarContainer}>
@@ -36,6 +50,7 @@ const HeroAvatar = ({ avatarId }) => {
 					height={150}
 					onLoadingComplete={() => setHasLoaded(true)}
 					className={clsx(styles.heroAvatar, isHovered && styles.hideAvatar)}
+					id={ids.fadeToWink}
 				/>
 			</div>
 		</div>

@@ -3,7 +3,8 @@ import Panel from "../components/Panel";
 import Hero from "../components/Hero";
 import { connect, useDispatch } from "react-redux";
 import * as Types from "../state/Types";
-const SectionOne = ({ sections: { isEntering } }) => {
+
+const SectionOne = ({ sections: { isEntering }, enterAnimation }) => {
 	const dispatch = useDispatch();
 	const setIsEntering = () => {
 		if (!isEntering && typeof window !== "undefined") {
@@ -21,7 +22,11 @@ const SectionOne = ({ sections: { isEntering } }) => {
 	};
 	return (
 		<div>
-			<Hero setIsEntering={setIsEntering} setHasEntered={setHasEntered} />
+			<Hero
+				setIsEntering={setIsEntering}
+				setHasEntered={setHasEntered}
+				enterAnimation={enterAnimation}
+			/>
 		</div>
 	);
 };

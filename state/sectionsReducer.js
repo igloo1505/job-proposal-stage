@@ -20,13 +20,14 @@ const sectionReducer = createReducer(initialState, (builder) => {
 		return {
 			...state,
 			isEntering: true,
-			activeSection: null,
+			// activeSection: null,
 		};
 	});
 	builder.addCase(Types.SET_STABLE_SECTION, (state, action) => {
 		return {
 			...state,
 			activeSection: action.payload,
+			isEntering: false,
 		};
 	});
 });

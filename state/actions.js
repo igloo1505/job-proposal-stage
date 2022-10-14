@@ -10,3 +10,18 @@ export const updateUISpecs = (e) => {
 		},
 	});
 };
+
+export const handleTransition = (newSection, clearSection, enterSection) => {
+	store.dispatch({
+		type: Types.SET_IS_ENTERING,
+	});
+	// Clear section takes in the new entering function to call on complete, and enter section calls the setStable function.
+	clearSection(() => {
+		enterSection(() => {
+			store.dispatch({
+				type: Types.SET_STABLE_SECTION,
+				payload: newSection,
+			});
+		});
+	});
+};

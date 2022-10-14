@@ -13,7 +13,6 @@ const Panel = ({
 	const [isHovered, setIsHovered] = useState(false);
 	const handleHover = (value) => {
 		if (hoverBoxShadow) {
-			console.log("setting hovered");
 			setIsHovered(value);
 		}
 	};

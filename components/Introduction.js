@@ -4,10 +4,13 @@ import clsx from "clsx";
 import { Typography } from "@mui/material";
 import HeroAvatar from "./HeroAvatar";
 
-const Introduction = ({ introTextId, avatarId }) => {
+const Introduction = ({ introTextId, avatarId, hasInitiallyEntered }) => {
 	return (
 		<div className={styles.introContainer}>
-			<HeroAvatar avatarId={avatarId} />
+			<HeroAvatar
+				avatarId={avatarId}
+				hasInitiallyEntered={hasInitiallyEntered}
+			/>
 			<Typography
 				className={clsx(styles.introText, styles.largeIntro)}
 				align="left"
