@@ -7,6 +7,7 @@ import * as ids from "../animations/domIDs";
 import Image from "next/image";
 import { connect } from "react-redux";
 import { observerUnderlineTarget } from "../animations/enterAnimations";
+
 const Introduction = ({
 	introTextId,
 	avatarId,
@@ -38,7 +39,8 @@ const Introduction = ({
 					width={70}
 					height={70}
 					layout="responsive"
-					objectFit="cover"
+					objectFit="contain"
+					objectPosition={"top center"}
 					className={styles.bestFriendUnderline}
 				/>
 			</div>

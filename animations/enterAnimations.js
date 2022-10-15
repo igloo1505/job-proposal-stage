@@ -3,20 +3,24 @@ import * as ids from "./domIDs";
 import { _id } from "../utils/utilFunctions";
 import { winkyWinky } from "./variousAnimations";
 import introStyles from "../styles/introduction.module.scss";
+import store from "../state/store";
 
-export const observerUnderlineTarget = (e) => {
+export const observerUnderlineTarget = (e, override = false) => {
+	if (store.getState().sections.activeSection !== 1 && !override) {
+		return;
+	}
 	let targetEm = document.getElementById(ids.textTarget_bestFriend);
 	let underlineEm = document.getElementById(ids.bestFriendUnderline);
 	if (targetEm && underlineEm) {
 		let targetRect = targetEm.getBoundingClientRect();
-		underlineEm.style.width = `calc(${targetRect.width}px + 1rem)`;
-		underlineEm.style.top = `calc(${targetRect.top}px + 1.4rem)`;
-		underlineEm.style.left = `calc(${targetRect.left}px - 0.5rem)`;
+		underlineEm.style.width = `calc(${targetRect.width}px)`;
+		underlineEm.style.top = `calc(${targetRect.top}px + ${
+			underlineEm.getBoundingClientRect().height * 0.4 + targetRect.height * 0.5
+		}px)`;
+		// targetEm.style.border = "1px solid green";
+		// underlineEm.style.border = "1px solid red";
+		underlineEm.style.left = `calc(${targetRect.left}px)`;
 		underlineEm.classList.remove(introStyles.underlineContainerHide);
-		console.log(
-			"introStyles.underlineContainerHide: ",
-			introStyles.underlineContainerHide
-		);
 	}
 };
 

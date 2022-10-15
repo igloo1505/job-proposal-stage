@@ -1,10 +1,15 @@
 import gsap from "gsap";
 import * as ids from "./domIDs";
 import { _id } from "../utils/utilFunctions";
+import introStyles from "../styles/introduction.module.scss";
 
 const clearSections = {
 	1: (enterNewSection) => {
 		const tl = gsap.timeline({ onComplete: enterNewSection });
+		let underlineEm = document.getElementById(ids.bestFriendUnderline);
+		if (underlineEm) {
+			underlineEm.classList.add(introStyles.underlineContainerHide);
+		}
 		tl.to(_id(ids.avatarId), {
 			x: 300,
 			y: 75,
